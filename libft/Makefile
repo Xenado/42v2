@@ -47,28 +47,49 @@ SRC_NAME	=	ft_atoi.c\
 				ft_putstr_fd.c\
 				ft_putendl_fd.c\
 				ft_putnbr_fd.c
-SRC_NAME_B	=	
+SRC_NAME_B	=	ft_lstnew_bonus.c\
+				ft_lstadd_front_bonus.c\
+				ft_lstsize_bonus.c\
+				ft_lstlast_bonus.c\
+				ft_lstadd_back_bonus.c\
+				ft_lstdelone_bonus.c\
+				ft_lstclear_bonus.c\
+				ft_lstiter_bonus.c\
+				ft_lstmap_bonus.c
 OBJ_NAME	=	$(SRC_NAME:.c=.o)
+OBJ_NAME_B	=	$(SRC_NAME_B:.c=.o)
 SRC_PATH	=	.
+SRC_PATH_B	=	.
 OBJ_PATH	=	.
+OBJ_PATH_B	=	.
 SRC			=	$(addprefix $(SRC_PATH)/,$(SRC_NAME))
+SRC_B		=	$(addprefix $(SRC_PATH_B)/,$(SRC_NAME_B))
 OBJ			=	$(addprefix	$(OBJ_PATH)/,$(OBJ_NAME))
-INC			=	.
+OBJ_B		=	$(addprefix	$(OBJ_PATH_B)/,$(OBJ_NAME_B))
+INC			=	libft.h
+INC_B		=	libft_bonus.h
+INC_PATH	=	.
 
 CC			=	gcc
-CFLAGS		=	-Wall -Wextra -Werror -I$(INC)
+CFLAGS		=	-Wall -Wextra -Werror -I$(INC_PATH)
 RM			=	rm -rf
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	@ar rc $(NAME) $(OBJ)
+$(NAME): $(OBJ) 
+	ar rc $(NAME) $(OBJ)
 
-$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c 
+bonus: $(OBJ_B) $(OBJ) $(INC) $(INC_B)
+	ar rc $(NAME) $(OBJ_B) $(OBJ)
+
+$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(INC)
+	$(CC) $(CFLAGS) -o $@ -c $<
+
+$(OBJ_PATH_B)/%.o: $(SRC_PATH_B)/%.c 
 	$(CC) $(CFLAGS) -o $@ -c $<
 
 clean:
-	$(RM) $(OBJ)
+	$(RM) $(OBJ) $(OBJ_B)
 
 fclean: clean
 	$(RM) $(NAME)
