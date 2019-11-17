@@ -38,11 +38,11 @@ LDFLAGS		=	-Llibft
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@$(MAKE) -c $(LIB)
+	@$(MAKE) -C $(LIB)
 	$(CC) $(LDFLAGS) $(LDLIBS) $(OBJ) -o $(NAME)
 
 bonus: $(OBJ_B) $(OBJ) $(INC) $(INC_B)
-	@$(MAKE) -c $(LIB)
+	@$(MAKE) -C $(LIB)
 	$(CC) $(LDFLAGS) $(LDLIBS) $(OBJ) $(ONJ_B) -o $(NAME)
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(INC)
