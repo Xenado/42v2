@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast_bonus.c                                 :+:      :+:    :+:   */
+/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jocaille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/12 14:38:15 by jocaille          #+#    #+#             */
-/*   Updated: 2019/11/12 14:38:17 by jocaille         ###   ########.fr       */
+/*   Created: 2019/11/12 13:39:05 by jocaille          #+#    #+#             */
+/*   Updated: 2019/11/12 13:39:08 by jocaille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft_bonus.h"
+#include "libft.h"
 
-t_list	*ft_lstlast(t_list *lst)
+t_list	*ft_lstnew(void *content)
 {
+	t_list	*lst;
+
+	lst = malloc(sizeof(t_list));
 	if (!lst)
 		return (NULL);
-	while (lst->next)
-	{
-		lst = lst->next;
-	}
+	lst->content = content;
+	lst->next = NULL;
 	return (lst);
 }
