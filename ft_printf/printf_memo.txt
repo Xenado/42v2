@@ -1,0 +1,36 @@
+Printf renvoie le nombre de caractères imprimés (int)
+
+chaque conversion commence par "%" et fini par "indicateur de conversion" :
+% > attributs > largeur minimal de champ > précision > modificateur de longeur -> indicateur de conversion
+
+arguments doivent correspondre avec les indicateurs de conversion
+
+%% -> afficher %
+
+ %
+
+ |
+ v
+attributs
+- -> valeur justifiée sur la limite gauche du champ
+0 -> remplissage à gauche de 0 pour d, i, u, x, X | si 0 et - -> 0 ignoré
+ |
+ v
+* -> largeur de champ de type int
+. -> précision pour d, i, u, x, X
+
+
+ |
+ v
+
+c -> converti en unsigned char et affiche le caractère
+s -> affiche la chaine de caractère jusqu'a \0 -> si précision affiche "précision" caractères
+p -> argument de type void * affiché en hexadécimal avec 0x devant
+d, i -> int -> si précision -> nombre minimal de chiffre à afficher -> 0 converti avec une précision de 0 = sortie vide
+u -> unsigned int -> 0 converti avec une précision de 0 = sortie vide
+x -> hexadécimal -> 0 converti avec une précision de 0 = sortie vide
+X -> HEXADECIMAL -> 0 converti avec une précision de 0 = sortie vide
+% -> %
+
+
+
