@@ -1,25 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter_bonus.c                                 :+:      :+:    :+:   */
+/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jocaille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/12 15:05:57 by jocaille          #+#    #+#             */
-/*   Updated: 2019/11/12 15:05:59 by jocaille         ###   ########.fr       */
+/*   Created: 2019/11/12 15:09:06 by jocaille          #+#    #+#             */
+/*   Updated: 2019/11/12 15:09:09 by jocaille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft_bonus.h"
+#include "libft.h"
 
-void	ft_lstiter(t_list *lst, void (*f)(void *))
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	if (lst)
+	t_list	*start;
+	t_list	*tmp;
+	int		size;
+	int		i;
+
+	i = 1;
+	start = NULL;
+	size = ft_lstsize(lst);
+	if (size)
+		start = ft_lstnew((*f)(lst->content));
+	tmp = start;
+	while (i < size)
 	{
-		while (lst)
-		{
-			(*f)(lst->content);
-			lst = lst->next;
-		}
+		lst = lst->next;
+		tmp->next = ft_lstnew((*f)(lst->content));
+		tmp = tmp->next;
+		i++;
 	}
+	(void)(*del);
+	return (start);
 }

@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front_bonus.c                            :+:      :+:    :+:   */
+/*   ft_lstlast_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jocaille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/12 14:32:35 by jocaille          #+#    #+#             */
-/*   Updated: 2019/11/12 14:32:37 by jocaille         ###   ########.fr       */
+/*   Created: 2019/11/12 14:38:15 by jocaille          #+#    #+#             */
+/*   Updated: 2019/11/12 14:38:17 by jocaille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft_bonus.h"
+#include "libft.h"
 
-void	ft_lstadd_front(t_list **alst, t_list *new)
+t_list	*ft_lstlast(t_list *lst)
 {
-	if (alst && new)
+	if (!lst)
+		return (NULL);
+	while (lst->next)
 	{
-		new->next = *alst;
-		*alst = new;
+		lst = lst->next;
 	}
+	return (lst);
 }

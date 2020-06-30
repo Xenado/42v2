@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstdelone_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jocaille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/18 18:25:22 by jocaille          #+#    #+#             */
-/*   Updated: 2019/11/18 18:25:25 by jocaille         ###   ########.fr       */
+/*   Created: 2019/11/12 14:53:47 by jocaille          #+#    #+#             */
+/*   Updated: 2019/11/12 14:53:49 by jocaille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
-#include <fcntl.h>
+#include "libft.h"
 
-int		main(int ac, char **av)
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	int		ret;
-	char	*str;
-	int		i = 0;
-
-	(void)ac;
-	ret = open(av[1], O_RDONLY);
-	while ((i = get_next_line(ret, &str)) > 0)
+	if (lst)
 	{
-		printf("%d | %s\n", i, str);
+		if (lst->content)
+			(*del)(lst->content);
+		free(lst);
 	}
 }

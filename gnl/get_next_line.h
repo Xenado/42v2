@@ -15,19 +15,19 @@
 
 # include <stdlib.h>
 # include <sys/types.h>
-# include <sys =/uio.h>
+# include <sys/uio.h>
 # include <unistd.h>
 
-# define BUFFER_SIZE
+int		get_next_line(int fd, char **line);
+char	*ft_join(char *s, char *buf);
+int		ft_check_eol(char *s);
+char	*ft_line(char *s, char **line, int eol);
+int		ft_read(int fd, char **str, char **line);
 
-typedef struct	s_lstfd
-{
-	int				fd;
-	char			buf[BUFFER_SIZE];
-	struct s_lstfd	*next;
-}				t_lstfd;
-
-int				get_next_line(int fd, char **line);
-void			ft_strncpy(char *buf, char *src, int size);
+int		ft_strlen(const char *str);
+char	*ft_strcpy(char *dst, const char *src);
+char	*ft_strcat(char *s1, const char *s2);
+char	*ft_newstr(size_t size);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
 
 #endif
